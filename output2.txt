@@ -1,0 +1,390 @@
+// ---------- simple strings -------------- 
+[1] select * from student where lname = Jackson
+   "Sammuel L.", 	Jackson, 	CS, 				40,		Uber
+    "Flo", 			"Jackson", 	Math,	 			21,		Google
+
+    2 3 
+
+[2] select * from student where major = CS
+
+    Flo, 			Yao, 		CS, 				20, 	Google
+    Bo, 			Yang, 		CS, 				28,		Microsoft
+    "Sammuel L.", 	Jackson, 	CS, 				40,		Uber
+    "Anna Grace", 	"Del Rio", 	CS,	 				22,		USAF
+
+    0 1 2 7
+
+[3] select * from student where company = Uber
+    "Sammuel L.", 	Jackson, 	CS, 				40,		Uber
+        2
+
+
+
+//----- quoted strings ---------------------
+
+[4] select * from student where lname = "Del Rio"
+    "Anna Grace", 	"Del Rio", 	CS,	 				22,		USAF
+    7
+
+[5] select * from student where fname = "Jim Bob"
+    "Jim Bob", 		Smith, 		Math,	 			23,		Verizon
+    5
+
+[6] select * from student where fname = "Anna Grace"
+    "Anna Grace", 	"Del Rio", 	CS,	 				22,		USAF
+    7
+
+[7] select * from student where fname = "Teresa Mae"
+    "Teresa Mae", 	Gowers, 	Chemistry,			22,		Verizon
+    8
+
+
+//-------- non-existing string ------------------
+[8] select * from student where lname = "Does Not Exist"
+
+    EMPTY
+
+
+
+//****************************************************************************
+//		RELATIONAL OPERATORS:
+//****************************************************************************
+
+//.................
+//:Greater Than   :
+//.................
+select * from student where lname > Yang
+    Flo, 			Yao, 		CS, 				20, 	Google
+    "Sammuel L.", 	Jackson, 	CS, 				40,		Uber
+    "Flo", 			"Jackson", 	Math,	 			21,		Google
+    "Greg", 			"Pearson", 	Physics,			20,		Amazon
+    "Jim Bob", 		Smith, 		Math,	 			23,		Verizon
+    Calvin, 			Woo, 		Physics,			22,		Uber
+    "Anna Grace", 	"Del Rio", 	CS,	 				22,		USAF
+    "Teresa Mae", 	Gowers, 	Chemistry,			22,		Verizon
+    Alex,			Smith,		"Gender Studies", 	53,		Amazon
+
+
+select * from student where major > Math
+    "Greg", 			"Pearson", 	Physics,			20,		Amazon
+    Calvin, 			Woo, 		Physics,			22,		Uber
+
+
+select * from student where fname > "Sammuel L."
+    "Teresa Mae", 	Gowers, 	Chemistry,			22,		Verizon
+
+
+select * from employee where salary > 200000
+    "Van Gogh",	Vincent, 		Art,		240000, 	2015
+    "Van Gogh",	Vincent, 		CS,			245000, 	2015
+    "Van Gogh",	"Jim Bob", 		"Phys Ed",	230000, 	2010
+
+
+select * from employee where dep > Chemistry
+select * from employee where last > Jackson
+select * from employee where first > "Billy Bob"
+
+
+
+//****************************************************************************
+//		LOGICAL OPERATORS
+//****************************************************************************
+
+
+//.................
+//:AND            :
+//.................
+
+select * from student where fname = "Flo" and lname = "Yao"
+
+    Flo, 			Yao, 		CS, 				20, 	Google
+
+select * from student where major = "CS" and age < 25
+
+    Flo, 			Yao, 		CS, 				20, 	Google
+    "Anna Grace", 	"Del Rio", 	CS,	 				22,		USAF
+
+
+select * from student where major < Math and age > 25
+
+    Bo, 			Yang, 		CS, 				28,		Microsoft
+    "Sammuel L.", 	Jackson, 	CS, 				40,		Uber
+    Alex,			Smith,		"Gender Studies", 	53,		Amazon
+
+
+select * from employee where dep = CS and salary > 150000
+    Yang, 		Bo, 			CS,			160000, 	2013
+    "Van Gogh",	Vincent, 		CS,			245000, 	2015
+
+select * from employee where last = Jackson and year < 2015
+    Jackson,	Bo,	 			Chemistry,	130000, 	2011
+
+
+select * from employee where last = Johnson and year >=2014
+    Johnson, 	Jack, 			HR, 		150000, 	2014
+    Johnson, 	"Jimmy", 		Chemistry,	140000, 	2018
+    Johnson,	"Mary Ann", 	Math,		165000, 	2014
+    Johnson,	"Billy Bob", 	Physics,	142000, 	2014
+    Johnson,	Billy, 			"Phys Ed",	102000, 	2014
+
+
+//.................
+//:OR            :
+//.................
+select * from student where fname = Flo or lname = Jackson
+    Flo, 			Yao, 		CS, 				20, 	Google
+    "Sammuel L.", 	Jackson, 	CS, 				40,		Uber
+    "Flo", 			"Jackson", 	Math,	 			21,		Google
+
+select * from student where age >=40  or company = Verizon
+    "Sammuel L.", 	Jackson, 	CS, 				40,		Uber
+    Alex,			Smith,		"Gender Studies", 	53,		Amazon
+    "Jim Bob", 		Smith, 		Math,	 			23,		Verizon
+    "Teresa Mae", 	Gowers, 	Chemistry,			22,		Verizon
+
+
+select * from employee where first = Bo or last = Johnson
+    Yang, 		Bo, 			CS,			160000, 	2013
+    Jackson,	Bo,	 			Chemistry,	130000, 	2011
+    Johnson, 	Jack, 			HR, 		150000, 	2014
+    Johnson, 	"Jimmy", 		Chemistry,	140000, 	2018
+    Johnson,	"Mary Ann", 	Math,		165000, 	2014
+    Johnson,	"Billy Bob", 	Physics,	142000, 	2014
+    Johnson,	Billy, 			"Phys Ed",	102000, 	2014
+
+
+select * from employee where year >= 2015 or dep = CS
+    Blow, 		Joe, 			CS,		 	100000, 	2018
+    Blow, 		JoAnn,			Physics, 	200000, 	2016
+    Johnson, 	"Jimmy", 		Chemistry,	140000, 	2018
+    Jackson,	"Flo", 			Math,		165000, 	2017
+    "Jackson",	Billy, 			Math,	 	170000, 	2017
+    "Yao", 		Flo, 			CS,			147000, 	2012
+    Yang, 		Bo, 			CS,			160000, 	2013
+    "Van Gogh",	Vincent, 		CS,			245000, 	2015
+    Van Gogh    Vincent         Art         240000      2015
+
+select * from employee where year >= 2020 or dep = CompSci
+
+
+
+
+select * from employee where year < 2010 or dep = CS
+    Blow, 		Joe, 			CS,		 	100000, 	2018
+    "Yao", 		Flo, 			CS,			147000, 	2012
+    Yang, 		Bo, 			CS,			160000, 	2013
+    "Van Gogh",	Vincent, 		CS,			245000, 	2015
+
+
+//.................
+//:OR AND         :
+//.................
+select * from student where fname = Flo or major = CS and age <= 23
+    "Flo", 			"Jackson", 	Math,	 			21,		Google
+    Flo, 			Yao, 		CS, 				20, 	Google
+    "Anna Grace", 	"Del Rio", 	CS,	 				22,		USAF
+
+
+select * from employee where last = "Van Gogh" or last = Jackson and salary >= 165000
+    "Van Gogh",	Vincent, 		Art,		240000, 	2015
+    "Van Gogh",	Vincent, 		CS,			245000, 	2015
+    "Van Gogh",	"Jim Bob", 		"Phys Ed",	230000, 	2010
+    Jackson,	"Flo", 			Math,		165000, 	2017
+    "Jackson",	Billy, 			Math,	 	170000, 	2017
+
+
+select * from student where lname = Jackson or age < 23 and company > Uber
+     "Sammuel L.", 	Jackson, 	CS, 				40,		Uber
+    "Flo", 			"Jackson", 	Math,	 			21,		Google
+    "Teresa Mae", 	Gowers, 	Chemistry,			22,		Verizon
+
+
+select * from student where lname = Jackson or age > 23 and company > Uber
+    "Sammuel L.", 	Jackson, 	CS, 				40,		Uber
+    "Flo", 			"Jackson", 	Math,	 			21,		Google
+
+
+
+select * from student where lname = Jackson or age > 73 and company > Uber
+    "Sammuel L.", 	Jackson, 	CS, 				40,		Uber
+    "Flo", 			"Jackson", 	Math,	 			21,		Google
+
+
+
+select * from student where lname = "Jackson" or age > 73 and company > Uber
+    "Sammuel L.", 	Jackson, 	CS, 				40,		Uber
+    "Flo", 			"Jackson", 	Math,	 			21,		Google
+
+
+
+select * from student where lname = "Solis" or age > 73 and company > Uber
+
+
+
+select * from student where lname = "Solis" or age > 23 and company > Uber
+
+
+
+
+//.................
+//:AND OR AND     :
+//.................
+
+select * from student where age <30 and major=CS or major = Physics and company = Amazon
+    Flo, 			Yao, 		CS, 				20, 	Google
+    Bo, 				Yang, 		CS, 				28,		Microsoft
+    "Anna Grace", 	"Del Rio", 	CS,	 				22,		USAF
+    "Greg", 			"Pearson", 	Physics,			20,		Amazon
+
+
+select * from student where age <=40 and company=Uber or major = CS and company = Google
+    "Sammuel L.", 	Jackson, 	CS, 				40,		Uber
+    Calvin, 			Woo, 		Physics,			22,		Uber
+    Flo, 			Yao, 		CS, 				20, 	Google
+
+
+select * from employee where dep = CS and salary >= 160000 or year > 2014 and last = "Van Gogh"
+   
+    Yang, 		Bo, 			CS,			160000, 	2013
+    "Van Gogh",	Vincent, 		CS,			245000, 	2015
+    "Van Gogh",	Vincent, 		Art,		240000, 	2015
+
+
+select * from employee where dep = CS and salary >= 160000 or year > 2015 and last = "Van Gogh"
+    Yang, 		Bo, 			CS,			160000, 	2013
+    "Van Gogh",	Vincent, 		CS,			245000, 	2015
+
+
+
+//.................
+//:OR AND OR      :
+//.................
+
+select * from student where lname = Yang or major = CS and age < 23 or company = Google 
+    Bo, 				Yang, 		CS, 				28,		Microsoft
+    Flo, 			Yao, 		CS, 				20, 	Google
+    "Anna Grace", 	"Del Rio", 	CS,	 				22,		USAF
+    "Flo", 			"Jackson", 	Math,	 			21,		Google
+
+
+select * from student where major = Physics or major = Math and company = Google or lname = Jackson
+
+    "Greg", 			"Pearson", 	Physics,			20,		Amazon
+    Calvin, 			Woo, 		Physics,			22,		Uber
+    "Flo", 			"Jackson", 	Math,	 			21,		Google
+    "Sammuel L.", 	Jackson, 	CS, 				40,		Uber
+
+
+
+select * from employee where dep = CS or year >2014 and year < 2018 or salary >= 240000
+    Blow, 		Joe, 			CS,		 	100000, 	2018
+    "Yao", 		Flo, 			CS,			147000, 	2012
+    Yang, 		Bo, 			CS,			160000, 	2013
+    "Van Gogh",	Vincent, 		CS,			245000, 	2015
+    Blow, 		JoAnn,			Physics, 	200000, 	2016
+    Jackson,	"Flo", 			Math,		165000, 	2017
+    "Jackson",	Billy, 			Math,	 	170000, 	2017
+    "Van Gogh",	Vincent, 		Art,		240000, 	2015
+
+
+select * from employee where dep = CS or year >2014 and year < 2018 or salary >= 242000
+    Blow, 		Joe, 			CS,		 	100000, 	2018
+    "Yao", 		Flo, 			CS,			147000, 	2012
+    Yang, 		Bo, 			CS,			160000, 	2013
+    "Van Gogh",	Vincent, 		CS,			245000, 	2015
+    Blow, 		JoAnn,			Physics, 	200000, 	2016
+    Jackson,	"Flo", 			Math,		165000, 	2017
+    "Jackson",	Billy, 			Math,	 	170000, 	2017
+    "Van Gogh",	Vincent, 		Art,		240000, 	2015
+
+select * from employee where dep = CS or year >2014 and year < 2018 or salary > 240000
+
+    Blow, 		Joe, 			CS,		 	100000, 	2018
+    "Yao", 		Flo, 			CS,			147000, 	2012
+    Yang, 		Bo, 			CS,			160000, 	2013
+    "Van Gogh",	Vincent, 		CS,			245000, 	2015
+    Blow, 		JoAnn,			Physics, 	200000, 	2016
+    Jackson,	"Flo", 			Math,		165000, 	2017
+    "Jackson",	Billy, 			Math,	 	170000, 	2017
+    "Van Gogh",	Vincent, 		Art,		240000, 	2015
+
+
+// ================
+    PARENTHESIS 
+// ================
+
+//.................
+//:OR AND         :
+//.................
+select * from student where (fname = Flo or major = CS) and (age <= 23)
+
+    Flo                Yao                CS              20               Google
+    Flo                Jackson            Math            21               Google
+    Anna Grace         Del Rio            CS              22               USAF
+
+select * from student where (lname = Jackson or age < 23) and (company > Uber)
+    Teresa Mae           Gowers             Chemistry                22             Verizon
+
+
+
+
+select * from employee where (last = "Van Gogh" or last = Jackson) and (salary >= 165000)
+
+    Jackson             Flo                    Math                 165000            2017
+    Jackson             Billy                  Math                 170000            2017
+    Van Gogh            Vincent                Art                  240000            2015
+    Van Gogh            Vincent                CS                   245000            2015
+    Van Gogh            Jim Bob                Phys Ed              230000            2010
+
+//.................
+//:AND OR AND     :
+//.................
+
+select * from student where (age <30) and (major=CS or major = Physics) and (company = Amazon)
+
+    Greg             Pearson            Physics              20                   Amazon
+
+
+
+
+select * from student where (age <=40) and (company=Uber or major = CS ) and (company = Google)
+    Flo             Yao                 CS              20                   Google
+
+
+
+
+select * from employee where (dep = CS) and (salary >= 160000 or year > 2014) and (last = "Van Gogh")
+    Van Gogh        Vincent             CS              245000              2015
+
+
+
+
+
+//.................
+//:OR AND OR      :
+//.................
+
+select * from student where ((lname = Yang or major = CS) and (age < 23 or company = Google ))
+    Flo            Yao            CS                       20                   Google
+    Anna Grace    Del Rio         CS                       22                     USAF
+
+
+select * from student where (major = Physics or major = Math) and (company = Google or lname = Jackson)
+    Flo         Jackson         Math        21          Google
+
+
+select * from employee where (dep = CS or year >2014) and (year < 2018 or salary >= 265000)
+    Blow            JoAnn                  Physics              200000          2016
+    Yao             Flo                    CS                   147000          2012
+    Yang            Bo                     CS                   160000          2013
+    Jackson         Flo                    Math                 165000          2017
+    Jackson         Billy                  Math                 170000          2017
+    Van Gogh        Vincent                Art                  240000          2015
+    Van Gogh        Vincent                CS                   245000          2015
+
+
+
+
+
+
+
