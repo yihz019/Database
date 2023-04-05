@@ -29,15 +29,8 @@
 
 - Any thoughts you may have and would like to share.
 
-# **output**
-<pre>
-<br/><br/>
-
+# **Output**
 https://user-images.githubusercontent.com/93494138/206886725-cc2edd1b-9ee6-4a1d-8d47-24087bb42ca6.mp4
-
-<br/><br/>
-
-</pre>
 
 
 <br/><br/>
