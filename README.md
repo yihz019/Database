@@ -5,7 +5,6 @@
 
 ## Features:
 <pre>
-<br><br>
 - Implemented:
   - SQL class that read and run commands to write or retrieve information from binary files
   - Commands that the database can take:
@@ -15,7 +14,7 @@
     - Print
     - Select 
 
-<br><br>
+<br>
 - Partly implemented:
   - Run function for user interface
   - Drop table
