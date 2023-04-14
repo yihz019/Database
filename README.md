@@ -15,18 +15,12 @@
     - Select 
 
 <br><br>
-
+<pre>
 - Partly implemented:
   - Run function for user interface
   - Drop table
+</pre>
 
-<pre>
-<br><br>
-- Not Implemented:
-  - 
-
-<br><br>
-<pre>
 # **Output**
 https://user-images.githubusercontent.com/93494138/206886725-cc2edd1b-9ee6-4a1d-8d47-24087bb42ca6.mp4
 
