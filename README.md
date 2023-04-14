@@ -4,6 +4,7 @@
 ## Name: <ins> Yi Zhuang </ins>
 
 ## Features:
+<pre>
 <br><br>
 - Implemented:
   - SQL class that read and run commands to write or retrieve information from binary files
@@ -15,7 +16,6 @@
     - Select 
 
 <br><br>
-<pre>
 - Partly implemented:
   - Run function for user interface
   - Drop table
