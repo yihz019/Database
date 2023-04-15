@@ -20,13 +20,13 @@
   - Drop table
 </pre>
 
-# **Output**
+# **Brief Overview**
 https://user-images.githubusercontent.com/93494138/206886725-cc2edd1b-9ee6-4a1d-8d47-24087bb42ca6.mp4
 
 
 <br/><br/>
 
-# testOutput.cpp output:
+# test.cpp output:
 <pre>
 <br/><br/>
 
