@@ -6,7 +6,7 @@
 ## Features:
 <pre>
 - Implemented:
-  - SQL class that read and run commands to write or retrieve information from binary files
+  - SQL class that reads and runs commands to write or retrieve information from binary files
   - Commands that the database can take:
     - Create/Make table
     - Insert into
